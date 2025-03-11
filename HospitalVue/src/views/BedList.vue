@@ -14,7 +14,6 @@
           <el-button type="primary" style="margin-left: 20px" @click="handleAdd" icon="el-icon-circle-plus-outline" >发布公告</el-button>
         </div>
       <div class="indexGG">
-        <span style="font-size: 17px;font-weight: bold ;color: black;margin-left: 30px;">系统公告</span>
         <div class="userGG">
           <el-table
             :data="tableData"

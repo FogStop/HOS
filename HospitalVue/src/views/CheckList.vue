@@ -1,70 +1,104 @@
 <template>
-<!-- 管理员-项目信息管理 -->
-  <div>
-<!--  项目页面  -->
-    <!-- 卡片 -->
-    <el-card>
+  <!-- 管理员-项目信息管理 -->
+  <div class="manage-container">
+    <el-card class="main-card">
       <!-- 搜索栏及增加检查 -->
-      <el-row type="flex">
-        <el-col :span="6">
-          <el-input v-model="query" placeholder="请输入名称查询">
-            <el-button
-              slot="append"
-              icon="el-icon-search"
-              @click="requestChecks"
-            ></el-button>
-          </el-input>
-        </el-col>
-        <el-col :span="6"></el-col>
-        <el-col :span="6">
+      <div class="header-toolbar">
+        <el-input
+          v-model="query"
+          placeholder="请输入名称查询"
+          class="search-input"
+          clearable
+          @clear="requestChecks"
+        >
           <el-button
-            type="primary"
-            style="font-size: 18px"
-            @click="addFormVisible = true"
-          >
-            <i class="el-icon-circle-plus-outline" style="font-size: 22px;"></i>
-            增加项目
-          </el-button
-          >
-        </el-col>
-      </el-row>
+            slot="append"
+            icon="el-icon-search"
+            @click="requestChecks"
+          ></el-button>
+        </el-input>
+
+        <el-button
+          type="primary"
+          class="add-btn"
+          @click="addFormVisible = true"
+        >
+          <i class="el-icon-circle-plus-outline"></i>
+          新增项目
+        </el-button>
+      </div>
+
       <!-- 表格 -->
-      <el-table :data="checkData" stripe style="width: 100%" border>
-        <el-table-column label="编号" prop="chId" align="center"></el-table-column>
-        <el-table-column label="项目" prop="chName" align="center"></el-table-column>
-        <el-table-column label="价格/元" align="center" prop="chPrice">
+      <el-table
+        :data="checkData"
+        stripe
+        style="width: 100%"
+        class="data-table"
+        header-cell-class-name="table-header"
+      >
+        <el-table-column
+          label="编号"
+          prop="chId"
+          align="center"
+          width="120"
+        ></el-table-column>
+        <el-table-column
+          label="项目名称"
+          prop="chName"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          label="价格（元）"
+          align="center"
+          prop="chPrice"
+          width="150"
+        >
           <template slot-scope="scope">
-            {{ scope.row.chPrice }}元
+            <span class="price-tag">{{ scope.row.chPrice }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="180" fixed="right" align="center">
+        <el-table-column
+          label="操作"
+          width="180"
+          fixed="right"
+          align="center"
+        >
           <template slot-scope="scope">
-            <el-button
-              style="font-size: 12px"
-              type="success"
-              @click="modifyDialog(scope.row.chId)"
-            ><i class="el-icon-edit-outline" style="font-size: 18px;"></i></el-button>
-            <el-button
-              style="font-size: 14px;margin-left: 1px;"
-              type="danger"
-              @click="deleteDialog(scope.row.chId)"
-            ><i class="el-icon-delete" style="font-size: 18px;"></i></el-button>
+            <el-tooltip content="编辑" placement="top">
+              <el-button
+                type="text"
+                class="action-btn edit-btn"
+                @click="modifyDialog(scope.row.chId)"
+              >
+                <i class="el-icon-edit-outline"></i>
+              </el-button>
+            </el-tooltip>
+
+            <el-tooltip content="删除" placement="top">
+              <el-button
+                type="text"
+                class="action-btn delete-btn"
+                @click="deleteDialog(scope.row.chId)"
+                style="padding-left: 1px"
+              >
+                <i class="el-icon-delete"></i>
+              </el-button>
+            </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
 
       <!-- 分页 -->
       <el-pagination
+        class="pagination"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        background
-        layout="total, sizes, prev, pager, next, jumper"
         :current-page="pageNumber"
+        :page-sizes="[8, 16, 24, 32]"
         :page-size="size"
-        :page-sizes="[1, 2, 4, 8, 16]"
+        layout="total, sizes, prev, pager, next, jumper"
         :total="total"
-      >
-      </el-pagination>
+      ></el-pagination>
     </el-card>
 
     <!-- 增加检查项目对话框 -->
@@ -119,6 +153,136 @@
     </el-dialog>
   </div>
 </template>
+
+<style scoped lang="scss">
+/* 颜色变量 */
+$--color-primary: #409EFF;
+$--color-success: #67C23A;
+$--color-warning: #E6A23C;
+$--color-danger: #F56C6C;
+$--color-text-primary: #303133;
+$--color-text-regular: #606266;
+$--color-border: #EBEEF5;
+
+.manage-container {
+  padding: 20px;
+
+  .main-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+    ::v-deep .el-card__body {
+      padding: 24px;
+    }
+  }
+
+  .header-toolbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+
+    .search-input {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .add-btn {
+      padding: 12px 24px;
+
+      i {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .data-table {
+    margin: 24px 0;
+    border: 1px solid $--color-border;
+
+    .table-header {
+      background: #f8f9fa !important;
+      color: $--color-text-primary;
+      font-weight: 600;
+    }
+
+    .price-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #f0f9ff;
+      border-radius: 4px;
+      color: $--color-primary;
+    }
+
+    .action-btn {
+      padding: 8px;
+      font-size: 16px;
+
+      &.edit-btn {
+        color: $--color-primary;
+
+        &:hover {
+          color: lighten($--color-primary, 10%);
+        }
+      }
+
+      &.delete-btn {
+        color: $--color-danger;
+
+        &:hover {
+          color: lighten($--color-danger, 10%);
+        }
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 24px;
+    justify-content: flex-end;
+  }
+
+  .form-dialog {
+    ::v-deep .el-dialog {
+      border-radius: 8px;
+
+      &__header {
+        border-bottom: 1px solid $--color-border;
+        padding: 16px 24px;
+      }
+
+      &__body {
+        padding: 24px;
+      }
+
+      &__footer {
+        padding: 16px 24px;
+        border-top: 1px solid $--color-border;
+      }
+    }
+
+    .el-form-item {
+      margin-bottom: 20px;
+
+      &__label {
+        color: $--color-text-regular;
+        padding-right: 16px;
+      }
+    }
+
+    .dialog-footer {
+      .el-button {
+        padding: 10px 24px;
+
+        i {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+</style>
+
 <script>
 import request from "@/utils/request.js";
 
@@ -297,13 +461,3 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
-.el-table {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.el-form {
-  margin-top: 0;
-}
-</style>

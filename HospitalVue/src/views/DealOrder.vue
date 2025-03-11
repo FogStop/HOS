@@ -112,7 +112,7 @@
               <template slot-scope="scope">
                 <el-button
                   type="danger"
-                  
+
                   style="font-size: 14px;"
                   icon="el-icon-delete"
                   @click="deleteDrug(scope.row.drId)"

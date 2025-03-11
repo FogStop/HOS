@@ -12,7 +12,7 @@
           患者姓名：<el-input disabled v-model="pName" class="orderInput"></el-input>
       </el-col>
         <el-col :span="3">
-          <el-button type="success" 
+          <el-button type="success"
                   style="font-size: 18px;"
                   icon="iconfont icon-r-paper" @click="submitClick"> 提交</el-button>
       </el-col>
@@ -27,7 +27,7 @@
           医生姓名：<el-input disabled v-model="dName" class="orderInput"></el-input>
       </el-col>
               <el-col :span="3">
-          <el-button type="success" 
+          <el-button type="success"
                   style="font-size: 18px;" @click="openAdvice">
                   <i class="el-icon-circle-plus-outline" style="font-size: 20px;"></i>
                   诊断/意见</el-button>
@@ -51,7 +51,7 @@
         <el-table-column label="单价" prop="drPrice"></el-table-column>
         <el-table-column label="操作" width="120" fixed="right">
           <template slot-scope="scope">
-            <el-button type="success" 
+            <el-button type="success"
                   style="font-size: 14px;" @click="addDrug(scope.row.drId)">
                   <i class="el-icon-circle-plus-outline" style="font-size: 16px;"></i>
                   增加</el-button>
@@ -68,7 +68,7 @@
   :page-size="size"
   :page-sizes="[1, 2, 4, 8, 16]"
   >
-  
+
 </el-pagination>
 <el-row></el-row>
       </el-col>
@@ -82,7 +82,7 @@
              <el-table-column label="小记" prop="drSum"></el-table-column>
              <el-table-column label="操作" width="120" fixed="right">
                <template slot-scope="scope">
-                 <el-button type="danger" 
+                 <el-button type="danger"
                   style="font-size: 14px;"
                   icon="el-icon-delete" @click="deleteDrug(scope.row.drId)"> 移除</el-button>
                </template>
@@ -91,7 +91,7 @@
         <el-tag>共计：{{drugTotalPrice}}元</el-tag>
 
       </el-col>
-      
+
 </el-row>
 <!-- 检查项目编写 -->
 <el-row>
@@ -109,7 +109,7 @@
               <el-table-column label="价格" prop="chPrice"></el-table-column>
               <el-table-column label="操作" width="120" fixed="right">
                 <template slot-scope="scope">
-                  <el-button type="success" 
+                  <el-button type="success"
                   style="font-size: 14px;" @click="addCheck(scope.row.chId)">
                   <i class="el-icon-circle-plus-outline" style="font-size: 16px;"></i>
                   增加</el-button>
@@ -135,7 +135,7 @@
               <el-table-column label="价格" prop="chPrice"></el-table-column>
               <el-table-column label="操作" width="120" fixed="right">
                 <template slot-scope="scope">
-                  <el-button type="danger" 
+                  <el-button type="danger"
                   style="font-size: 14px;"
                   icon="el-icon-delete" @click="deleteCheck(scope.row.chId)"> 移除</el-button>
                 </template>
@@ -220,11 +220,11 @@ export default {
     },
     //点击提交按钮
     submitClick(){
-      
+
       for(let i=0;i<this.drugBuyData.length;i++){
          this.reduceDrugNumber(this.drugBuyData[i].drId, this.drugBuyData[i].drNum);
-      }; 
-      let data = { 
+      };
+      let data = {
           oId: this.dataPackage().oId,
         //   pId: this.pId,
         //   dId: this.dId,
@@ -239,7 +239,7 @@ export default {
          this.$message.error("请求信息错误");
          return;
               }
-              
+
          //this.$message.success("提交成功！请登录系统自助缴费！");
                   request.get("order/findTotalPrice", {
            params: {
@@ -249,7 +249,7 @@ export default {
          .then(res => {
            if(res.data.status === 200)
            this.$message.success("提交成功！请登录系统自助缴费！");
-           
+
          });
 
 
@@ -258,7 +258,7 @@ export default {
          console.log(res.data)
       })
       .catch(err => {
-        console.error(err); 
+        console.error(err);
       })
 
     },
@@ -413,7 +413,7 @@ export default {
             this.drugData[j].drNumber -=1;
           }
            this.drugTotalPrice += res.data.data.drPrice;//药物价格总计
-         
+
 
         console.log(res.data.data);
       })
@@ -445,7 +445,7 @@ export default {
               this.$message.error("获取信息失败");
               this.drugData = res.data.data.drugs;
               this.total = res.data.data.total;
-  
+
 
         console.log(res);
       })
@@ -464,7 +464,7 @@ export default {
               this.pName = res.data.data.pName;
               this.pGender = res.data.data.pGender;
               this.pPhone = res.data.data.pPhone;
-              
+
           })
 
       },

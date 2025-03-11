@@ -1,12 +1,93 @@
 <template>
-<!-- 管理员-数据统计页面 -->
-  <div class="Echarts">
-    <div id="orderPeople" style="width: 1200px; height: 400px;"></div>
-    <div id="orderSection" style="width: 1200px; height: 400px;"></div>
-    <div id="orderGender" style="width: 540px; height: 500px;float:left"></div>
-    <div id="patientAge" style="width: 600px; height: 500px;float:right"></div>
+  <!-- 管理员-数据统计页面 -->
+  <div class="data-dashboard">
+    <!-- 顶部两个大图表 -->
+    <el-row :gutter="20" class="chart-row">
+      <el-col :span="24">
+        <el-card class="chart-card">
+          <div id="orderPeople" style="width: 100%; height: 400px;"></div>
+        </el-card>
+      </el-col>
+      <el-col :span="24">
+        <el-card class="chart-card">
+          <div id="orderSection" style="width: 100%; height: 400px;"></div>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <!-- 底部两个并排图表 -->
+    <el-row :gutter="20" class="chart-row">
+      <el-col :span="12">
+        <el-card class="chart-card">
+          <div id="orderGender" style="width: 100%; height: 400px;"></div>
+        </el-card>
+      </el-col>
+      <el-col :span="12">
+        <el-card class="chart-card">
+          <div id="patientAge" style="width: 100%; height: 400px;"></div>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
+
+<style scoped lang="scss">
+.data-dashboard {
+  padding: 20px;
+  background-color: #f5f7fa;
+
+  .chart-row {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .chart-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    ::v-deep .el-card__body {
+      padding: 20px;
+    }
+  }
+}
+
+// 统一图表标题样式
+
+.echarts-title {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+</style>
+
+<script>
+// 在图表配置中统一添加标题样式
+
+// 示例（在orderGender方法中）：
+var option = {
+  title: {
+    text: '患者性别比例',
+    left: 'center',
+    textStyle: {
+      fontSize: 16,
+      color: '#333'
+    }
+  },
+  // ...其他配置
+
+}
+</script>
+
 <script>
 import request from "@/utils/request.js";
 export default {
@@ -75,8 +156,8 @@ export default {
         }
     ]
 };
-       
-            
+
+
 
 // 使用刚指定的配置项和数据显示图表。
           myChart.setOption(option);
@@ -84,7 +165,7 @@ export default {
 
       })
       .catch(err => {
-        console.error(err); 
+        console.error(err);
       })
     },
     //统计挂号科室人数
@@ -124,11 +205,11 @@ export default {
           myChart.setOption(option);
 
 
-        
+
 
       })
       .catch(err => {
-        console.error(err); 
+        console.error(err);
       })
     },
     //挂号男女比例
@@ -156,7 +237,7 @@ export default {
             data: [
                 {value: res.data.data.map((item) => item.countGender)[0], name: res.data.data.map((item) => item.patient.pGender)[0]},
                 {value: res.data.data.map((item) => item.countGender)[1], name: res.data.data.map((item) => item.patient.pGender)[1]},
-                
+
             ],
             emphasis: {
                 itemStyle: {
@@ -173,7 +254,7 @@ export default {
 
       })
       .catch(err => {
-        console.error(err); 
+        console.error(err);
       });
 
 
@@ -235,5 +316,3 @@ export default {
 };
 </script>
 
-<style>
-</style>

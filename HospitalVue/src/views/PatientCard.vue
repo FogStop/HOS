@@ -1,8 +1,9 @@
 <template>
-<!-- 患者卡片列表 -->
-  <div style="width: 100%; margin-top: -10px">
-    <el-card shadow="hover">
-      <table>
+  <!-- 患者卡片列表 -->
+  <div class="patient-card-container">
+    <el-card class="patient-card" shadow="hover">
+      <h2 class="card-title">个人信息</h2>
+      <table class="patient-table">
         <tr>
           <td>姓名：</td>
           <td><el-input disabled v-model="patientData.pName"></el-input></td>
@@ -39,6 +40,52 @@
     </el-card>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.patient-card-container {
+  width: 100%;
+  margin-top: -10px;
+  display: flex;
+  justify-content: center; /* Center the card horizontally */
+  padding: 20px; /* Add padding overall */
+}
+
+.patient-card {
+  width: 100%;
+  max-width: 600px; /* Limit the card width */
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.patient-card:hover {
+  transform: scale(1.02); /* Slightly enlarge card on hover */
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center; /* Center the title */
+  padding: 10px 0; /* Add padding for spacing */
+  color: #333; /* Dark grey color for title */
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse; /* Remove spacing between borders */
+}
+
+.patient-table td {
+  white-space: nowrap; /* Prevent breaking of words in cells */
+  padding: 12px; /* Space between text and cell borders */
+  border-bottom: 1px solid #ddd; /* Add light grey bottom border */
+}
+
+.patient-table tr:hover {
+  background-color: #f9f9f9; /* Light grey background on row hover */
+}
+</style>
+
 <script>
 import jwtDecode from "jwt-decode";
 import { getToken } from "@/utils/storage.js";
@@ -79,10 +126,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scope>
-td,
-th {
-  white-space: nowrap;
-  padding: 10px;
-}
-</style>

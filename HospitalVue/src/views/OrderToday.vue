@@ -20,7 +20,7 @@
                     </el-button>
                 </template>
             </el-table-column>
-            
+
         </el-table>
     </el-card>
 </template>
@@ -37,7 +37,7 @@ export default {
             today: "",
 
             orderData:[],
-                
+
         }
     },
     methods: {
@@ -68,7 +68,7 @@ export default {
                this.orderData = res.data.data;
                 //this.orderData.dName = this.userName;
                 console.log(res.data.data);
-                  
+
             })
         },
     //token解码
@@ -91,7 +91,7 @@ export default {
         date.month = "0"+date.month
       }
       this.today = date.year+"-"+date.month+"-"+date.date;
-      
+
     },
     },
     created(){
@@ -104,7 +104,7 @@ export default {
         this.nowDay();
         //获取订单信息
         this.requestOrder();
-       
+
     },
 }
 </script>

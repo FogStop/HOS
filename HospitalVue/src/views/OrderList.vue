@@ -129,87 +129,7 @@
         </el-pagination>
     </el-card>
 </template>
-<script>
-import request from "@/utils/request.js";
-export default {
-    name: "OrderList",
-    data() {
-        return {
-            pageNumber: 1,
-            size: 8,
-            query: "",
-            orderData: [],
-            total: 3,
-        };
-    },
-    methods: {
-        //删除挂号操作
-        deleteOrder(id) {
-            request
-                .get("admin/deleteOrder", {
-                    params: {
-                        oId: id,
-                    },
-                })
-                .then((res) => {
-                    this.requestOrders();
-                    console.log(res);
-                });
-        },
-        //删除对话框
-        deleteDialog(id) {
-            this.$confirm("此操作将永久删除该挂号信息, 是否继续?", "提示", {
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
-                type: "warning",
-            })
-                .then(() => {
-                    this.deleteOrder(id);
-                    this.$message({
-                        type: "success",
-                        message: "删除成功!",
-                    });
-                })
-                .catch(() => {
-                    this.$message({
-                        type: "info",
-                        message: "已取消删除",
-                    });
-                });
-        },
-        //页面大小改变时触发
-        handleSizeChange(size) {
-            this.size = size;
-            this.requestOrders();
-        },
-        //   页码改变时触发
-        handleCurrentChange(num) {
-            console.log(num);
-            this.pageNumber = num;
-            this.requestOrders();
-        },
-        // 加载订单列表
-        requestOrders() {
-            request
-                .get("admin/findAllOrders", {
-                    params: {
-                        pageNumber: this.pageNumber,
-                        size: this.size,
-                        query: this.query,
-                    },
-                })
-                .then((res) => {
-                    this.orderData = res.data.data.orders;
-                    this.total = res.data.data.total;
-                    console.log(res.data.data);
-                });
-        },
-    },
-    created() {
-        this.requestOrders();
-    },
-};
-</script>
+
 <style scoped lang="scss">
 .el-table {
     margin-top: 20px;
@@ -219,3 +139,84 @@ export default {
     margin-top: 0;
 }
 </style>
+<script>
+import request from "@/utils/request.js";
+export default {
+  name: "OrderList",
+  data() {
+    return {
+      pageNumber: 1,
+      size: 8,
+      query: "",
+      orderData: [],
+      total: 3,
+    };
+  },
+  methods: {
+    //删除挂号操作
+    deleteOrder(id) {
+      request
+        .get("admin/deleteOrder", {
+          params: {
+            oId: id,
+          },
+        })
+        .then((res) => {
+          this.requestOrders();
+          console.log(res);
+        });
+    },
+    //删除对话框
+    deleteDialog(id) {
+      this.$confirm("此操作将永久删除该挂号信息, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.deleteOrder(id);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    //页面大小改变时触发
+    handleSizeChange(size) {
+      this.size = size;
+      this.requestOrders();
+    },
+    //   页码改变时触发
+    handleCurrentChange(num) {
+      console.log(num);
+      this.pageNumber = num;
+      this.requestOrders();
+    },
+    // 加载订单列表
+    requestOrders() {
+      request
+        .get("admin/findAllOrders", {
+          params: {
+            pageNumber: this.pageNumber,
+            size: this.size,
+            query: this.query,
+          },
+        })
+        .then((res) => {
+          this.orderData = res.data.data.orders;
+          this.total = res.data.data.total;
+          console.log(res.data.data);
+        });
+    },
+  },
+  created() {
+    this.requestOrders();
+  },
+};
+</script>

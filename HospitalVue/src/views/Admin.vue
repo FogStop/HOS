@@ -1,99 +1,102 @@
 <template>
   <el-container>
-<!--  管理员-导航栏  -->
     <!-- 头部 -->
-    <el-header>
+    <el-header class="header-container">
       <div class="head-bar">
-        <div class="header-ico">
-          <!--      <i class="el-icon-s-home"></i>-->
-          <img
-            src="@/assets/img/1.png"
-            style="
-              width: 40px;
-              height: 40px;
-              margin-left: -30px;
-              margin-top: 15px;
-            "
-          />
+        <div class="header-brand">
+          <img src="@/assets/img/1.png" class="brand-logo" />
+          <h1 class="brand-title">智慧医疗信息平台</h1>
         </div>
-        <div class="logo" style="margin-left: -15px">智慧医疗信息平台</div>
-        <div class="head-right">
-          <div class="head-user-con">
-            <div class="user-avatar">
-              <img src="../assets/11.png" />
-            </div>
 
-            <el-dropdown
-              @command="handleCommand"
-              class="user-name"
-              trigger="click"
-            >
-              <span class="el-dropdown-link">
-                <span
-                  >欢迎您，<b>{{ userName }}</b
-                  >&nbsp;管理员&nbsp;</span
-                >
-                <i class="el-icon-caret-bottom"></i>
+        <div class="user-panel">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <img
+                src="@/assets/11.png"
+                alt="管理员头像"
+                class="avatar-image"
+              >
+            </div>
+            <el-dropdown trigger="click" @command="handleCommand">
+              <span class="user-greeting">
+                欢迎您，<strong>{{ userName }}</strong> 管理员
+                <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                <el-dropdown-item command="logout" class="logout-btn">
+                  <i class="el-icon-switch-button"></i>退出登录
+                </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
         </div>
       </div>
     </el-header>
-    <el-container>
+
+    <el-container class="main-container">
       <!-- 侧边栏 -->
-      <el-aside width="200px">
-        <!-- 导航菜单 -->
+      <el-aside width="220px" class="nav-sidebar">
         <el-menu
-          background-color="#0c73a7"
-          text-color="#0000000"
-          active-text-color="#fff"
           :default-active="activePath"
+          class="nav-menu"
+          active-text-color="#fff"
+          @select="menuClick"
         >
-          <el-menu-item index="adminLayout" @click="menuClick('adminLayout')" style="border-radius: 10%;">
-            <i class="el-icon-s-home" style="font-size: 18px;"> 首页</i>
+          <el-menu-item index="adminLayout" class="nav-item">
+            <i class="el-icon-s-home nav-icon"></i>
+            <span class="nav-text">首页</span>
           </el-menu-item>
-          <el-menu-item index="doctorList" @click="menuClick('doctorList')" style="border-radius: 10%">
-            <i class="el-icon-user" style="font-size: 18px"> 医生信息管理</i>
+
+          <el-menu-item index="doctorList" class="nav-item">
+            <i class="el-icon-user nav-icon"></i>
+            <span class="nav-text">医生信息管理</span>
           </el-menu-item>
-          <el-menu-item index="patientList" @click="menuClick('patientList')" style="border-radius: 10%">
-            <i class="el-icon-user-solid" style="font-size: 18px">
-              患者信息管理</i
-            >
+
+          <el-menu-item index="patientList" class="nav-item">
+            <i class="el-icon-user-solid nav-icon"></i>
+            <span class="nav-text">患者信息管理</span>
           </el-menu-item>
-          <el-menu-item index="orderList" @click="menuClick('orderList')" style="border-radius: 10%">
-            <i class="el-icon-postcard" style="font-size: 18px">
-              挂号项目管理</i
-            >
+
+          <el-menu-item index="orderList" class="nav-item">
+            <i class="el-icon-postcard nav-icon"></i>
+            <span class="nav-text">挂号项目管理</span>
           </el-menu-item>
-          <el-menu-item index="drugList" @click="menuClick('drugList')" style="border-radius: 10%">
-            <i class="el-icon-first-aid-kit" style="font-size: 18px">
-              药物信息管理</i
-            >
+
+          <el-menu-item index="drugList" class="nav-item">
+            <i class="el-icon-first-aid-kit nav-icon"></i>
+            <span class="nav-text">药物信息管理</span>
           </el-menu-item>
-          <el-menu-item index="checkList" @click="menuClick('checkList')" style="border-radius: 10%">
-            <i class="el-icon-monitor" style="font-size: 18px"> 检查项目管理</i>
+
+          <el-menu-item index="checkList" class="nav-item">
+            <i class="el-icon-monitor nav-icon"></i>
+            <span class="nav-text">检查项目管理</span>
           </el-menu-item>
-          <el-menu-item index="arrangeIndex" @click="menuClick('arrangeIndex')" style="border-radius: 10%">
-            <i class="el-icon-news" style="font-size: 18px"> 排班信息管理</i>
+
+          <el-menu-item index="dataExpore" class="nav-item">
+            <i class="el-icon-s-data nav-icon"></i>
+            <span class="nav-text">住院管理</span>
           </el-menu-item>
-          <el-menu-item index="dataExpore" @click="menuClick('dataExpore')" style="border-radius: 10%">
-            <i class="el-icon-s-data" style="font-size: 18px"> 数据统计分析</i>
+
+
+          <el-menu-item index="arrangeIndex" class="nav-item">
+            <i class="el-icon-news nav-icon"></i>
+            <span class="nav-text">排班信息管理</span>
           </el-menu-item>
-          <el-menu-item index="bedList" @click="menuClick('bedList')" style="border-radius: 10%">
-            <i class="el-icon-office-building" style="font-size: 18px;"> 公告管理</i>
+
+          <el-menu-item index="dataExpore" class="nav-item">
+            <i class="el-icon-s-data nav-icon"></i>
+            <span class="nav-text">数据统计分析</span>
+          </el-menu-item>
+
+          <el-menu-item index="bedList" class="nav-item">
+            <i class="el-icon-office-building nav-icon"></i>
+            <span class="nav-text">公告管理</span>
           </el-menu-item>
         </el-menu>
-        
       </el-aside>
-      <el-main>
-        <!-- 子路由入口 -->
-        <router-view>
-          <div>你好吗</div>
-        </router-view>
+
+      <el-main class="content-area">
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -184,103 +187,133 @@ export default {
 .title {
   cursor: pointer;
 }
-.el-header {
-  background-color: #417da8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .words {
-    text-align: center;
-    span {
-      color: black;
+/* 复用医生页面的样式变量和基础样式 */
+$primary-blue: #427cb3;
+$secondary-blue: #0c73a7;
+$hover-blue: #5a9bd5;
+$text-white: #ffffff;
+$bg-gradient: linear-gradient(135deg, #427cb3 0%, #0c73a7 100%);
+
+.header-container {
+  background: $bg-gradient;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  height: 64px !important;
+  padding: 0 30px;
+
+  .head-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    .brand-title {
+      color: $text-white;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 0;
     }
   }
 
-  //border-bottom: 1px solid lightgrey;
-}
-.el-container {
-  height: 100%;
-}
-.el-aside {
-  background-color: #0c73a7;
-  border-right: 1px solid rgb(255, 252, 252);
-}
-.el-menu { 
-  border: 0;
-}
-.head-bar {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  height: 70px;
-  font-size: 22px;
-  color: #fff;
+  .user-panel {
+    .user-profile {
+      display: flex;
+      align-items: center;
+
+      .user-greeting {
+        color: $text-white;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          color: darken($text-white, 10%);
+        }
+
+        strong {
+          font-weight: 600;
+        }
+      }
+
+      .user-avatar {
+        margin-right: 12px;
+        .avatar-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 255, 255, 0.8);
+          object-fit: cover;
+          display: block;
+        }
+      }
+    }
+
+    .logout-btn {
+      color: $primary-blue;
+      padding: 10px 20px;
+
+      i {
+        margin-right: 8px;
+      }
+    }
+  }
 }
 
-.header-ico {
-  float: left;
-  padding: 0 21px;
-  line-height: 70px;
+.nav-sidebar {
+  background: $secondary-blue;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+
+  .nav-menu {
+    background: transparent;
+    border-right: none;
+    padding: 20px 0;
+
+    .nav-item {
+      height: 50px;
+      line-height: 50px;
+      margin: 8px 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      &.is-active {
+        background: $hover-blue;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-icon {
+        color: $text-white;
+        font-size: 18px;
+        margin-right: 12px;
+      }
+
+      .nav-text {
+        color: $text-white;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
 }
 
-.head-bar .logo {
-  float: left;
-  width: 250px;
-  line-height: 70px;
-  margin-left: -25px;
-}
-
-.head-right {
-  float: right;
-  padding-right: 50px;
-}
-
-.head-user-con {
-  display: flex;
-  height: 70px;
-  align-items: center;
-}
-
-.btn-fullscreen {
-  transform: rotate(45deg);
-  margin-right: 5px;
-  font-size: 24px;
-}
-
-.btn-fullscreen {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-.btn-bell .el-icon-bell {
-  color: #fff;
-}
-
-.user-name {
-  margin-left: 10px;
-}
-
-.user-avatar {
-  margin-left: 20px;
-}
-
-.user-avatar img {
-  display: block;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.el-dropdown-link {
-  color: #fff;
-  cursor: pointer;
-}
-
-.el-dropdown-menu__item {
-  text-align: center;
+.content-area {
+  background: #f5f7fa;
+  padding: 25px;
+  min-height: calc(100vh - 64px);
 }
 </style>

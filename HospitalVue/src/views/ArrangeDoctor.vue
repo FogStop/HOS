@@ -50,7 +50,7 @@
                     <el-button
                         v-if="scope.row.arrangeId == null"
                         type="success"
-                        icon="iconfont icon-r-paper" 
+                        icon="iconfont icon-r-paper"
                         style="font-size: 14px;"
                         @click="arrangeClick(scope.row.dId)"
                         > 排班</el-button
