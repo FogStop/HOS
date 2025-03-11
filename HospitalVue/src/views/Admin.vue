@@ -1,5 +1,6 @@
 <template>
   <el-container>
+<!--  管理员-导航栏  -->
     <!-- 头部 -->
     <el-header>
       <div class="head-bar">
@@ -52,37 +53,37 @@
           active-text-color="#fff"
           :default-active="activePath"
         >
-          <el-menu-item index="adminLayout" @click="menuClick('adminLayout')">
-            <i class="el-icon-s-home" style="font-size: 18px"> 首页</i>
+          <el-menu-item index="adminLayout" @click="menuClick('adminLayout')" style="border-radius: 10%;">
+            <i class="el-icon-s-home" style="font-size: 18px;"> 首页</i>
           </el-menu-item>
-          <el-menu-item index="doctorList" @click="menuClick('doctorList')">
+          <el-menu-item index="doctorList" @click="menuClick('doctorList')" style="border-radius: 10%">
             <i class="el-icon-user" style="font-size: 18px"> 医生信息管理</i>
           </el-menu-item>
-          <el-menu-item index="patientList" @click="menuClick('patientList')">
+          <el-menu-item index="patientList" @click="menuClick('patientList')" style="border-radius: 10%">
             <i class="el-icon-user-solid" style="font-size: 18px">
               患者信息管理</i
             >
           </el-menu-item>
-          <el-menu-item index="orderList" @click="menuClick('orderList')">
+          <el-menu-item index="orderList" @click="menuClick('orderList')" style="border-radius: 10%">
             <i class="el-icon-postcard" style="font-size: 18px">
               挂号项目管理</i
             >
           </el-menu-item>
-          <el-menu-item index="drugList" @click="menuClick('drugList')">
+          <el-menu-item index="drugList" @click="menuClick('drugList')" style="border-radius: 10%">
             <i class="el-icon-first-aid-kit" style="font-size: 18px">
               药物信息管理</i
             >
           </el-menu-item>
-          <el-menu-item index="checkList" @click="menuClick('checkList')">
+          <el-menu-item index="checkList" @click="menuClick('checkList')" style="border-radius: 10%">
             <i class="el-icon-monitor" style="font-size: 18px"> 检查项目管理</i>
           </el-menu-item>
-          <el-menu-item index="arrangeIndex" @click="menuClick('arrangeIndex')">
+          <el-menu-item index="arrangeIndex" @click="menuClick('arrangeIndex')" style="border-radius: 10%">
             <i class="el-icon-news" style="font-size: 18px"> 排班信息管理</i>
           </el-menu-item>
-          <el-menu-item index="dataExpore" @click="menuClick('dataExpore')">
+          <el-menu-item index="dataExpore" @click="menuClick('dataExpore')" style="border-radius: 10%">
             <i class="el-icon-s-data" style="font-size: 18px"> 数据统计分析</i>
           </el-menu-item>
-          <el-menu-item index="bedList" @click="menuClick('bedList')">
+          <el-menu-item index="bedList" @click="menuClick('bedList')" style="border-radius: 10%">
             <i class="el-icon-office-building" style="font-size: 18px;"> 公告管理</i>
           </el-menu-item>
         </el-menu>

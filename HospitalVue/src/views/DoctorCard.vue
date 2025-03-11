@@ -1,4 +1,5 @@
 <template>
+<!-- 患者-挂号医生信息页面 -->
     <div style="width: 100%;margin-top: -10px">
         <el-card shadow="hover">
             <table>

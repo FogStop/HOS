@@ -1,5 +1,5 @@
-
 <template>
+<!-- 管理员-排版信息管理 -->
     <div>
         <el-card>
             <div>

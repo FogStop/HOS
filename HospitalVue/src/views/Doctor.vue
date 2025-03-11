@@ -1,4 +1,5 @@
 <template>
+<!-- 医生-导航栏 -->
   <el-container>
     <!-- 头部 -->
     <el-header>
@@ -53,21 +54,21 @@
           text-color="#0000000"
           active-text-color="#fff"
         >
-          <el-menu-item index="doctorLayout" @click="menuClick('doctorLayout')">
+          <el-menu-item index="doctorLayout" @click="menuClick('doctorLayout')" style="border-radius: 10%;">
             <i class="el-icon-s-home" style="font-size: 18px"> 首页</i>
           </el-menu-item>
-          <el-menu-item index="orderToday" @click="menuClick('orderToday')">
+          <el-menu-item index="orderToday" @click="menuClick('orderToday')" style="border-radius: 10%;">
             <i class="el-icon-news" style="font-size: 18px"> 今日挂号列表</i>
           </el-menu-item>
-          <el-menu-item index="doctorOrder" @click="menuClick('doctorOrder')">
+          <el-menu-item index="doctorOrder" @click="menuClick('doctorOrder')" style="border-radius: 10%;">
             <i class="el-icon-monitor" style="font-size: 18px"> 历史患者列表</i>
           </el-menu-item>
-          <el-menu-item index="inBed" @click="menuClick('inBed')">
+          <el-menu-item index="inBed" @click="menuClick('inBed')" style="border-radius: 10%;">
             <i class="el-icon-postcard" style="font-size: 18px">
               住院申请管理</i
             >
           </el-menu-item>
-          <el-menu-item index="doctorCard" @click="menuClick('doctorCard')">
+          <el-menu-item index="doctorCard" @click="menuClick('doctorCard')" style="border-radius: 10%;">
             <i class="el-icon-user-solid" style="font-size: 18px">
               个人信息展示</i
             >

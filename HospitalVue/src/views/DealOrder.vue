@@ -1,5 +1,6 @@
 <template>
   <div>
+<!--  医生-历史挂号追诊  -->
     <el-card>
       <el-row>
         <el-col :span="7">

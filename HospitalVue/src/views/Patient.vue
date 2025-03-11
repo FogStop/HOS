@@ -1,4 +1,5 @@
 <template>
+<!--  患者-首页-->
   <el-container>
     <!-- 头部 -->
     <el-header>
@@ -56,19 +57,20 @@
           <el-menu-item
             index="patientLayout"
             @click="menuClick('patientLayout')"
+            style="border-radius: 10%;"
           >
             <i class="el-icon-s-home" style="font-size: 18px"> 首页</i>
           </el-menu-item>
-          <el-menu-item index="oderOperate" @click="menuClick('orderOperate')">
+          <el-menu-item index="oderOperate" @click="menuClick('orderOperate')" style="border-radius: 10%;">
             <i class="el-icon-monitor" style="font-size: 18px"> 预约挂号</i>
           </el-menu-item>
-          <el-menu-item index="myOrder" @click="menuClick('myOrder')">
+          <el-menu-item index="myOrder" @click="menuClick('myOrder')" style="border-radius: 10%;">
             <i class="el-icon-postcard" style="font-size: 18px"> 我的挂号</i>
           </el-menu-item>
-          <el-menu-item index="myBed" @click="menuClick('myBed')">
+          <el-menu-item index="myBed" @click="menuClick('myBed')" style="border-radius: 10%;">
             <i class="el-icon-news" style="font-size: 18px"> 住院信息</i>
           </el-menu-item>
-          <el-menu-item index="patientCard" @click="menuClick('patientCard')">
+          <el-menu-item index="patientCard" @click="menuClick('patientCard')" style="border-radius: 10%;">
             <i class="el-icon-user" style="font-size: 18px"> 个人信息</i>
           </el-menu-item>
         </el-menu>

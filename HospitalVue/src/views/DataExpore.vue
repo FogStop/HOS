@@ -1,4 +1,5 @@
 <template>
+<!-- 管理员-数据统计页面 -->
   <div class="Echarts">
     <div id="orderPeople" style="width: 1200px; height: 400px;"></div>
     <div id="orderSection" style="width: 1200px; height: 400px;"></div>

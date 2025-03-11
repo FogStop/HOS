@@ -21,7 +21,6 @@ import CheckList from "@/views/CheckList.vue";
 import DoctorOrder from "@/views/DoctorOrder.vue";
 import InBed from "@/views/InBed.vue";
 import ArrangeIndex from "@/views/ArrangeIndex.vue";
-import SectionList from "@/views/SectionList.vue";
 import AdminLayout from "@/views/AdminLayout.vue";
 import DoctorLayout from "@/views/DoctorLayout.vue";
 import PatientLayout from "@/views/PatientLayout.vue";
@@ -137,15 +136,6 @@ const routes = [
           },
         },
       ]
-      
-    },
-    {
-      path: "/sectionList",
-      component: SectionList,
-      meta: {
-        requireAuth: true,  // 该路由项需要权限校验
-      },
-     
       
     },
   ]

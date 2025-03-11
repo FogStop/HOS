@@ -1,7 +1,5 @@
-<!--
-
--->
 <template>
+<!-- 患者卡片列表 -->
   <div style="width: 100%; margin-top: -10px">
     <el-card shadow="hover">
       <table>

@@ -1,5 +1,6 @@
 <template>
 <div>
+<!-- 科室选择 -->
   <el-card>
     <!-- <span>科室门诊</span> -->
     <el-divider></el-divider>

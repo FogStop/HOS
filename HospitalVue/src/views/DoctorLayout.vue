@@ -1,4 +1,5 @@
 <template>
+<!--  医生-首页-->
   <div>
     <div class="indexPeople2" style="margin-left: 50px">
       <div class="userImage">

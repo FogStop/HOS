@@ -1,5 +1,6 @@
 <template>
   <div>
+<!--  管理员-首页  -->
     <el-card>
     <div class="indexPeople2" style="margin-left: 50px">
       <div class="userImage">

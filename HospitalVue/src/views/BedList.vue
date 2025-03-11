@@ -1,5 +1,6 @@
 <template>
     <div>
+<!--   管理员-公告管理页面   -->
       <el-card>
         <div class="header">
           <el-input
