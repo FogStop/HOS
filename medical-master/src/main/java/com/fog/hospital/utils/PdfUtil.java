@@ -43,7 +43,7 @@ public class PdfUtil {
         //设置文档标题
         document.addTitle("医院");
         //设置文档作者
-        document.addAuthor("兔兔科技工作室");
+        document.addAuthor("Fog工作室");
         document.addCreationDate();
         //设置关键字
         document.addKeywords("iText");
@@ -133,13 +133,8 @@ public class PdfUtil {
         cb.setFontAndSize(bf, 11);
         cb.showTextAligned(PdfContentByte.ALIGN_CENTER,  "该报告单仅供参考", 300, 40, 0);
         cb.setFontAndSize(bf,13);
-        cb.showTextAligned(PdfContentByte.ALIGN_CENTER,  "版权医院所有", 300, 20, 0);
+        cb.showTextAligned(PdfContentByte.ALIGN_CENTER,  "版权平台所有", 300, 20, 0);
         cb.endText();
-
-
-
-
-
         document.close();
     }
 }
