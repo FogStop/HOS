@@ -1,4 +1,5 @@
 <template>
+<!-- 管理员页面 -->
   <el-container>
     <!-- 头部 -->
     <el-header class="header-container">
@@ -7,7 +8,6 @@
           <img src="@/assets/img/1.png" class="brand-logo" />
           <h1 class="brand-title">智慧医疗信息平台</h1>
         </div>
-<!--        -->
 
         <div class="user-panel">
           <div class="user-profile">
