@@ -10,7 +10,7 @@
 
 #### 安装教程
 
-1.  npm i
+1.  npm i 安装依赖包
 2.  npm run dev
 
 
