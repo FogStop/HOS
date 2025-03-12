@@ -72,10 +72,10 @@
             <span class="nav-text">检查项目管理</span>
           </el-menu-item>
 
-          <el-menu-item index="dataExpore" class="nav-item">
-            <i class="el-icon-s-data nav-icon"></i>
-            <span class="nav-text">住院管理</span>
-          </el-menu-item>
+<!--          <el-menu-item index="dataExpore" class="nav-item">-->
+<!--            <i class="el-icon-s-data nav-icon"></i>-->
+<!--            <span class="nav-text">住院管理</span>-->
+<!--          </el-menu-item>-->
 
 
           <el-menu-item index="arrangeIndex" class="nav-item">
