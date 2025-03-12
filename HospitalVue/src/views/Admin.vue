@@ -6,6 +6,7 @@
         <div class="header-brand">
           <img src="@/assets/img/1.png" class="brand-logo" />
           <h1 class="brand-title">智慧医疗信息平台</h1>
+<!--          NDD-->
         </div>
 
         <div class="user-panel">
